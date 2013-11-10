@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Pampered Poultry - Checkout</title>
+
+<link rel="stylesheet" href="/css/global.css" type="text/css">
+<link rel="stylesheet" href="/css/cart.css" type="text/css">
+<link rel="shortcut icon" href="/images/favicon.ico">
+
+<script type="text/javascript" src="/js/jquery-1.8.2.min.js"></script>
+<script type="text/javascript" src="/js/env.js"></script>
+<script type="text/javascript" src="/js/global.js"></script>
+<script type="text/javascript" src="/js/cc_validation.js"></script>
+<script type="text/javascript" src="/js/checkout.js"></script>
+
+<!--[if lte IE 8]>
+<link href="/css/ie.css" rel="stylesheet" />
+<script type="text/javascript" src="/js/json3.min.js"></script>
+<![endif]-->
+
+<script>
+// Start menu load before page load is complete
+var countryMenuHTML, stateMenuHTML;
+
+$.ajax({
+        url: "/site/ajax/order_form_menus",
+        type: 'GET',
+        timeout: 10000,
+        dataType: 'json',
+        async: false,
+        success: function(data) {
+            if (data.status == 'OK') {
+                countryMenuHTML = data.payload.countries_menu;
+                stateMenuHTML = data.payload.states_menu;
+            } else {
+                window.location.href = thisSiteFullurl + '500.html';
+            }
+
+        },
+        error: function(a, b, c) {
+            window.location.href = thisSiteFullurl + '500.html';
+        }
+	});
+</script>
+
+
+</head>
+<body>
+
+<div class="global_header_bar">
+	<div class="global_page_container global_header_container">
+		<a href="/"><img src="/images/site/feather_icon.png" id="header_icon"></a>
+		<a href="/"><img src="/images/site/pyptext2.png" id="header_logo"></a>
+	</div>
+</div>
+
+
+<div class="global_page_container">
+
+<!-- Menu -->
+	<div class="menu_panel">
+		<div class="menu">
+			<h2>Pampered Products</h2>
+			<ul class="menu_list">
+				<li class="global_menuCart"><a class="menu_link" href="/secure/cart.html">Shopping Cart</a></li>
+				<li><a class="menu_link" href="/diapers.html">Diapers</a></li>
+				<li><a class="menu_link" href="/feather_guards.html">Feather Guards</a></li>
+				<li><a class="menu_link" href="/attire.html">Attire</a></li>
+			</ul>
+		</div>
+
+		<div class="menu">
+			<h2>Browse</h2>
+			<ul class="menu_list">
+				<li><a class="menu_link" href="/">Home</a></li>
+				<li><a class="menu_link" href="http://www.farmdreamer.blogspot.com/2012_11_01_archive.html">Farm Dreamer Blog</a></li>
+				<li><a class="menu_link" href="http://www.sewingmyfuture.org">Sewing My Future</a></li>
+				<li><a class="menu_link last_menu_item" href="/contact_pampered_poultry.html">Contact Us</a></li>
+			</ul>
+		</div>
+	</div>
+
+
+<!-- Content window -->
+	<div id="global_content_container">
+
+		<div id="global_content_pane">
+			<div class="global_wide_main_window">
+
+
+				<div class="cartpage_section" style="margin-top: 0;">
+					<div class="cartpage_content_container">
+						<div style="float: left; width: 300px;">
+							Your Pampered Poultry Order Summary
+						</div>
+						<table class="cartPage_orderSummary">
+							<thead>
+								<tr><th>Items total</th><th>Shipping</th><th style="font-weight: bold;">Order total</th></tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><span id="orderSummary_itemsTot"></span></td>
+									<td><span id="orderSummary_shipping"></span></td>
+									<td><span id="orderSummary_orderTot"></span></td>
+								</tr>
+							</tbody>
+						</table>
+						<div class="global_clearfix"></div>
+					</div>
+				</div>
+
+
+
+
+				<div class="cartpage_section">
+					<h2>Your shipping and contact information:</h2>
+
+					<div class="cartpage_content_container" style="padding-top: 8px;">
+						<form id="shippingForm" class="cartpage_form">
+
+							<div class="cartpage_formLine">
+								<label class="cartpage_formLabel" for="orderForm_email">Email</label>
+								<input type="text" id="orderForm_email" class="validated-input postData">
+								<div id="orderForm_email-msg" class="cartpage_validation_msg">A valid email is required.</div>
+							</div>
+
+							<div class="cartpage_formLine">
+								<label class="cartpage_formLabel" for="orderForm_country_code">Country</label>
+								<select id="orderForm_country_code" class="validated-input postData">
+									<script>document.write(countryMenuHTML);</script>
+								</select>
+								<div id="orderForm_country_code-msg" class="cartpage_validation_msg">A country is required.</div>
+							</div>
+
+							<div class="cartpage_formLine">
+								<label class="cartpage_formLabel" for="orderForm_name">Full Name</label>
+								<input type="text" id="orderForm_name" class="validated-input postData">
+								<div id="orderForm_name-msg" class="cartpage_validation_msg">A full name is required.</div>
+							</div>
+
+							<div class="cartpage_formLine">
+								<label class="cartpage_formLabel" for="orderForm_add1">Street</label>
+								<input type="text" id="orderForm_add1" class="validated-input postData">
+								<div id="orderForm_add1-msg" class="cartpage_validation_msg">A street address is required.</div>
+							</div>
+
+							<div class="cartpage_formLine">
+								<label class="cartpage_formLabel" for="orderForm_add2">Apt/Suite/Other</label>
+								<input type="text" id="orderForm_add2" class="postData">
+							</div>
+
+							<div class="cartpage_formLine">
+								<label class="cartpage_formLabel" for="orderForm_city">City</label>
+								<input type="text" id="orderForm_city" class="validated-input postData">
+								<div id="orderForm_city-msg" class="cartpage_validation_msg">City is required.</div>
+							</div>
+
+							<div class="cartpage_formLine us-only">
+								<label class="cartpage_formLabel" for="orderForm_state_code">State</label>
+								<select id="orderForm_state_code" class="stateField-input postData">
+									<script>document.write(stateMenuHTML);</script>
+								</select>
+								<div id="orderForm_state_code-msg" class="cartpage_validation_msg">State is required.</div>
+							</div>
+
+							<div class="cartpage_formLine non-us">
+								<label class="cartpage_formLabel" for="orderForm_state">State / Province / Region</label>
+								<input type="text" id="orderForm_state" class="stateField-input postData">
+								<div id="orderForm_state-msg" class="cartpage_validation_msg">A state, province, or region is required.</div>
+							</div>
+
+							<div class="cartpage_formLine">
+								<label class="cartpage_formLabel" for="orderForm_zip">Zip / Postal Code</label>
+								<input type="text" id="orderForm_zip" class="validated-input postData">
+								<div id="orderForm_zip-msg" class="cartpage_validation_msg">A zip/postal code is required.</div>
+							</div>
+
+						</form>
+					</div>
+
+				</div>
+
+
+
+
+				<div class="cartpage_section">
+					<h2>Your payment information:</h2>
+
+					<div class="cartpage_content_container">
+
+						<form id="paymentForm" class="payment_form">
+						<table>
+							<tr>
+								<td><label style="color: #333;" for="orderForm_card_number">Credit Card number</label></td>
+								<td><label style="color: #333;" for="orderForm_ccv">CCV</label></td>
+								<td><label style="color: #333;" for="orderForm_expire_month">Expiration date</label></td>
+							</tr>
+							<tr>
+								<td><input type="text" id="orderForm_card_number" class="validated-input postData" style="width: 137px; margin-left: 0;"></td>
+								<td><input type="text" id="orderForm_ccv" class="validated-input postData" style="width: 40px;"></td>
+								<td>
+								<select id="orderForm_expire_month" class="postData" style="border: 1px solid; color: black; background-color: white; margin-right: 8px;">
+									<option>01</option>
+									<option>02</option>
+									<option>03</option>
+									<option>04</option>
+									<option>05</option>
+									<option>06</option>
+									<option>07</option>
+									<option>08</option>
+									<option>09</option>
+									<option>10</option>
+									<option>11</option>
+									<option>12</option>
+								</select>
+								<select id="orderForm_expire_year" class="postData" style="border: 1px solid; color: black; background-color: white;">
+									<option>2013</option>
+									<option>2014</option>
+									<option>2015</option>
+									<option>2016</option>
+									<option>2017</option>
+									<option>2018</option>
+									<option>2019</option>
+									<option>2020</option>
+									<option>2021</option>
+									<option>2022</option>
+									<option>2023</option>
+									<option>2024</option>
+									<option>2025</option>
+									<option>2026</option>
+								</select>
+								</td>
+							</tr>
+							<tr>
+								<td><span id="orderForm_card_number-msg" class="paymentValidationMessage">Verify card number</span></td>
+								<td><span id="orderForm_ccv-msg" class="paymentValidationMessage">CCV Required</span></td>
+								<td><span class="paymentValidationMessage">Invalid expiration date</span></td>
+							</tr>
+						</table>
+					</form>
+
+					</div>
+
+				</div>
+
+
+
+				<div class="cartpage_section">
+					<h2>Your billing information: <input type="checkbox" id="billingSameAsShipping" value="Y" style="margin: 0 1px 0 34px;">
+					<span style="font-style: italic; font-size: 13px; vertical-align: bottom;">Same as shipping address</span></h2>
+
+					
+					<span style="display: block; margin-left: 70px; margin-top: 3px; font-style: italic;">(Must match your credit card billing information)</span>
+					<div class="cartpage_content_container" style="padding-top: 8px;">
+						<form id="billingForm" class="cartpage_form">
+
+							<div class="cartpage_formLine">
+								<label class="cartpage_formLabel" for="orderForm_bill_country_code">Country</label>
+								<select id="orderForm_bill_country_code" class="validated-input postData">
+									<script>document.write(countryMenuHTML);</script>
+								</select>
+								<div id="orderForm_bill_country_code-msg" class="cartpage_validation_msg">A country is required.</div>
+							</div>
+
+							<div class="cartpage_formLine">
+								<label class="cartpage_formLabel" for="orderForm_bill_add1">Street</label>
+								<input type="text" id="orderForm_bill_add1" class="validated-input postData">
+								<div id="orderForm_bill_add1-msg" class="cartpage_validation_msg">A street address is required.</div>
+							</div>
+
+							<div class="cartpage_formLine">
+								<label class="cartpage_formLabel" for="orderForm_bill_add2">Apt/Suite/Other</label>
+								<input type="text" id="orderForm_bill_add2" class="postData">
+							</div>
+
+							<div class="cartpage_formLine">
+								<label class="cartpage_formLabel" for="orderForm_bill_city">City</label>
+								<input type="text" id="orderForm_bill_city" class="validated-input postData">
+								<div id="orderForm_bill_city-msg" class="cartpage_validation_msg">City is required.</div>
+							</div>
+
+							<div class="cartpage_formLine us-only">
+								<label class="cartpage_formLabel" for="orderForm_bill_state_code">State</label>
+								<select id="orderForm_bill_state_code" class="stateField-input postData">
+									<script>document.write(stateMenuHTML);</script>
+								</select>
+								<div id="orderForm_bill_state_code-msg" class="cartpage_validation_msg">State is required.</div>
+							</div>
+
+							<div class="cartpage_formLine non-us">
+								<label class="cartpage_formLabel" for="orderForm_bill_state">State / Province / Region</label>
+								<input type="text" id="orderForm_bill_state" class="stateField-input postData">
+								<div id="orderForm_bill_state-msg" class="cartpage_validation_msg">A state, province, or region is required.</div>
+							</div>
+
+							<div class="cartpage_formLine">
+								<label class="cartpage_formLabel" for="orderForm_bill_zip">Zip / Postal Code</label>
+								<input type="text" id="orderForm_bill_zip" class="validated-input postData">
+								<div id="orderForm_bill_zip-msg" class="cartpage_validation_msg">A zip/postal code is required.</div>
+							</div>
+
+						</form>
+					</div>
+
+				</div>
+
+
+				<div class="cartpage_formButton_container">
+					<a href="#" class="global_button global_button_enlarge backNav">Back to Cart</a>
+					<a href="#" class="global_button global_button_enlarge placeOrder">Place Order</a>
+				</div>
+
+
+			</div>
+		</div>
+
+	</div>
+
+<!-- End content window -->
+
+
+	<div class="global_clearfix"></div>
+	<div class="global_footer">
+		&copy; 2013 Pampered Poultry
+	</div>
+
+
+</div>
+
+
+</body>
+</html>

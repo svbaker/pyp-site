@@ -1,0 +1,16 @@
+{
+  "name": "errtrack",
+  "version": "0.0.1",
+  "description": "Handle and report on trapped errors",
+  
+  "author": {
+    "name": "Sean V Baker",
+    "email": "sean.baker@bb-technologies.com",
+    "url": "http://www.bb-technologies.com"
+  },
+
+  "main": "errtrack",
+  "engines": {
+    "node": ">= 0.6.2"
+  }
+}

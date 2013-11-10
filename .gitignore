@@ -1,0 +1,11 @@
+env.json
+*.log
+public/images/uploads/*.*
+!public/images/uploads/nada.json
+public/images/site/products/*.*
+!public/images/site/products/nada.json
+ssl/
+public/images/logo-stock/
+public/js/env.js
+.DS_Store
+!/settings_files/

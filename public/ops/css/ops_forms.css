@@ -1,0 +1,300 @@
+/* Form Edit and Add styles  */
+
+.func_title {
+    font-weight: bold;
+}
+
+.func_formHeader {
+    position: relative;
+    padding: 4px 8px;
+    background-color: #333;
+    font-size: 80%;
+    color: #ccc;
+    margin: 2px;
+    border-bottom: 1px #444 solid;
+}
+
+.form_status {
+    display: block;
+    color: #777;
+    font-style: italic;
+    font-size: 10px;
+}
+
+.form_title_bar {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 4px;
+}
+
+label.data_form {
+    display: block;
+    float: left;
+    width: 160px;
+    text-align: right;
+    padding-right: 8px;
+    line-height: 26px;
+    font-size: 100%;
+    color: #444;
+}
+
+textarea {
+    resize: vertical;
+}
+
+input.data_form, select.data_form, option.data_form, textarea.data_form {
+    padding: 2px;
+    font-family: "Arial", "Helvetica", sans-serif;
+    font-size: 100%;
+    width: 300px;
+    float: left;
+}
+
+select.data_form {
+    margin: 4px 0 4px 0;
+}
+
+p.data_form {
+    padding: 4px;
+    clear: both;
+}
+
+span.form_editOnly {
+    display: inline-block;
+    vertical-align: bottom;
+    line-height: 25px;
+    font-size: 18px;
+}
+
+input.short_form, select.short_form {
+    width: 100px;
+}
+
+label.short_form {
+    width: 160px;
+}
+
+span.short_form {
+    float: left;
+}
+
+label.tight {
+    width: auto;
+    padding-left: 12px;
+}
+
+div.form_pick_list {
+    float: left;
+    width: 300px;
+}
+
+ul.form_pick_list {
+    display: block;
+    list-style-type: none;
+}
+
+select.form_pick_list {
+    width: 160px;
+    float: left;
+}
+
+input.form_pick_list {
+    width: 100px;
+    margin-left: 8px;
+}
+
+.dataTable thead th {
+    background-color: #ccc;
+    padding: 2px 6px;
+    color: #555;
+}
+
+.dataTable tbody td {
+    padding: 1px 4px;
+    color: #666;
+}
+
+.form_button {
+    background-image: linear-gradient(#e39f22, #c37f02);
+    background-color: #e39f22;
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    font-size: 12px;
+    font-weight: bold;
+    color: #fff;
+    text-decoration: none;
+    padding: 0 12px;
+    margin: 4px 4px;
+    line-height: 20px;
+    border: 0;
+    display: inline-block;
+    float: none;
+}
+
+.form_button:hover {
+    background-image: linear-gradient(#d38f12, #b36f00);
+    background-color: #d38f12;
+}
+
+.small_delete_button {
+    background-color: #a00;
+    border-radius: 2px;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    font-size: 10px;
+    font-weight: bold;
+    color: #fff;
+    text-decoration: none;
+    padding: 0 4px;
+    margin: 3px 3px;
+    border: 0;
+    display: inline-block;
+    float: none;
+}
+
+.small_add_button {
+    float: left;
+    background-color: #0a0;
+    border-radius: 2px;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    font-size: 10px;
+    font-weight: bold;
+    color: #fff;
+    text-decoration: none;
+    padding: 0 4px;
+    margin: 3px 3px;
+    border: 0;
+    display: inline-block;
+    float: none;
+}
+
+li.sublist {
+    font-size: 80%;
+}
+
+.form_submit_buttons_container {
+    clear: both;
+    width: 100%;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+}
+
+
+/* Image uploader styles */
+/* NOTE: Many elements that use the styles have their width/height set via JavaScript */
+
+.form_images-list {
+    width: 600px;
+    margin-bottom: 5px;
+    float: left;
+}
+
+.form_image-box {
+    display: inline;
+    list-style: none;
+    position: relative;
+    float: left;
+    padding: 5px;
+    border: 1px solid #dedede;
+    margin-right: 8px;
+    background: #fff;
+    overflow: hidden;
+}
+
+
+li.form_image-box.empty {
+    border-style: dashed;
+}
+
+li.form_image-box.empty div {
+    background: #fff url(/images/add_bg.png) repeat scroll 0 0;
+}
+
+li.form_image-box a.remove {
+    cursor: pointer;
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background: transparent url(/images/remove_button.png) no-repeat;
+    top: 8px;
+    right: 10px;
+    z-index: 999;
+}
+
+li.form_image-box a.preview {
+    cursor: pointer;
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background: transparent url(/images/preview.png) no-repeat;
+    top: 8px;
+    left: 8px;
+    z-index: 999;
+}
+
+.form_upload-container {
+    position: absolute;
+    z-index: 999;
+    top: 5px;
+    text-align: right;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.form_image-container {
+    border: 1px solid #dedede;
+    background-position: center;
+    background-size: cover;
+}
+
+.form_image-upload {
+    z-index: 9999;
+    opacity: 0;
+    filter: alpha(opacity = 0);
+    font-size: 55px;
+    position: relative;
+    float: right;
+    cursor: pointer;
+}
+
+.form_add-images-button {
+    background: #fff url(/images/add_bg.png) repeat scroll 0 0;
+    display: block;
+    padding-top: 12px;
+    text-transform: uppercase;
+    font-size: 10px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    color: #0192b5;
+    z-index: 0;
+}
+
+.form_button-add {
+    display: block;
+    margin: 0 auto 8px;
+    background: transparent url(/images/add_button.png);
+    display: block;
+    width: 28px;
+    height: 28px;
+    text-indent: -999em;
+}
+
+.form_loading-container {
+    position: absolute;
+    z-index: 1000;
+    top: 5px;
+    text-align: right;
+    overflow: hidden;
+    background-color: #ccc;
+    display: none;
+}
+
+.displayOnly_data {
+    display: inline-block;
+    line-height: 26px;
+}

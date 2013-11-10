@@ -1,0 +1,1 @@
+This directory holds node.js server access log files

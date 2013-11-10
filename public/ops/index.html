@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Pampered Poultry - OPS</title>
+
+<link rel="stylesheet" href="css/ops_shell.css" type="text/css">
+<link rel="stylesheet" href="css/ops_forms.css" type="text/css">
+<link rel="shortcut icon" href="/images/favicon.ico">
+
+<script type="text/javascript" src="/js/jquery-1.8.2.min.js" ></script>
+<script type='text/javascript' src='/js/jquery.form.min.js'></script>
+<script type='text/javascript' src='/js/spin.min.js'></script>
+<script type='text/javascript' src='/ops/js/ops_functions/list_table_specs.js'></script>
+<script type='text/javascript' src='/ops/js/ops_functions/breed.js'></script>
+<script type='text/javascript' src='/ops/js/ops_functions/prod.js'></script>
+<script type='text/javascript' src='/ops/js/ops_functions/order.js'></script>
+<script type='text/javascript' src='/ops/js/ops.js'></script>
+
+<!--[if IE]>
+<style>
+    /* IE Fix for control panel div placement */
+    * html #controlPanelDiv {
+        left: 150px;  /* RC width */
+    }
+</style>
+<![endif]-->
+
+</head>
+<body>
+
+<div id="shell_overlay"></div>
+
+<div id="shell_login">
+    <div id="shell_login_content">
+        User ID:<br>
+        <input class="shell_login_form" type="text" id="loginUserid" value="" size=20><br>
+        Password:<br>
+        <input class="shell_login_form" type="password" id="LoginPwd" value="" size=20>
+        <input id="shell_login_button" type="submit" value="Login">
+        <div id="shell_loginMessage"></div>
+        <div id="shell_statusLocation"></div>
+    </div>
+</div>
+
+
+<!-- Header ************************ -->
+<div id="shell_header">
+    <span id="shell_header_menu">Pamper Your Poultry OPS:
+        <a class="shell_nav_links" href="breed">Breeds</a>|
+        <a class="shell_nav_links" href="prod">Products</a>|
+        <a class="shell_nav_links" href="order">Orders</a>
+    </span>
+    <div id="shell_header_buttons_container">
+        <a href="#" class="shell_ops_button" id="logoutButton">Logout</a>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+<!-- breed  ************************************************ -->
+
+<div id="breedFunctionsContainer" class="shell_funcContainer">
+
+
+    <!-- List page -->
+    <div id="breedList" class="shell_mainWindow">
+        <table id="breedListTable" class="shell_listTable">
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Form page -->
+    <div id="breedForm" class="shell_mainWindow shell_ops_form">
+
+        <div class="func_formHeader">
+            <span class="func_title verb"></span>&nbsp;<span class="func_title">Breed</span>
+            <div class="form_title_bar">
+                <a href="#" class="shell_ops_button closeForm">X</a>
+            </div>
+        </div>
+
+        <form id="breedForm_form">
+
+            <p class="data_form editOnly">
+            <label class="data_form" for="breed_name">Breed ID:</label>
+            <p id="breedForm_breed_id_data" class="form_editOnly"></p>
+            </p>
+
+            <p class="data_form">
+            <label class="data_form" for="breed_fields_breed_name">Breed Name:</label>
+            <input class="data_form required" type="text" id="breed_fields_breed_name">
+            </p>
+
+            <p class="data_form">
+            <label class="data_form" for="breed_fields_breed_class_code">Breed Class:</label>
+            <select class="data_form required" id="breed_fields_breed_class_code"></select>
+            </p>
+
+            <p class="data_form">
+            <label class="data_form" for="breed_fields_breed_is_standard">Breed Recognized:</label>
+            <select class="data_form required" id="breed_fields_breed_is_standard">
+                <option></option>
+                <option value="Y">Yes</Option>
+                <option value="N">No</Option>
+            </select>
+            </p>
+
+            <p class="data_form">
+            <label class="data_form" for="breed_fields_weight_unit">Unit of weight:</label>
+            <select class="data_form required" id="breed_fields_weight_unit">
+                <option></option>
+                <option>lb</Option>
+                <option>oz</Option>
+            </select>
+            </p>
+
+            <p class="data_form">
+            <label class="data_form short_form" for="breed_fields_weight_lbs_cock">Weight, cock:</label>
+            <input class="data_form short_form required" type="text" id="breed_fields_weight_lbs_cock">
+            <label class="data_form short_form tight" for="breed_fields_weight_lbs_hen">hen:</label>
+            <input class="data_form short_form required" type="text" id="breed_fields_weight_lbs_hen">
+            </p>
+
+            <p class="data_form">
+            <label class="data_form short_form" for="breed_fields_weight_lbs_cockerel">cockerel:</label>
+            <input class="data_form short_form required" type="text" id="breed_fields_weight_lbs_cockerel">
+            <label class="data_form short_form tight" for="breed_fields_weight_lbs_pullet">pullet:</label>
+            <input class="data_form short_form required" type="text" id="breed_fields_weight_lbs_pullet">
+            </p>
+
+            <p class="data_form">
+            <label class="data_form" for="breed_fields_category">Category:</label>
+            <select class="data_form required" id="breed_fields_category">
+                <option></option>
+                <option>Meat</Option>
+                <option>Egg</Option>
+                <option>Dual Purpose</Option>
+                <option>Ornamental</Option>
+            </select>
+            </p>
+
+            <p class="data_form">
+            <label class="data_form" for="breed_fields_egg_size">Egg Size:</label>
+            <select class="data_form required" id="breed_fields_egg_size">
+                <option></option>
+                <option>Extra Small</Option>
+                <option>Small</Option>
+                <option>Medium</Option>
+                <option>Large</Option>
+                <option>Jumbo</Option>
+            </select>
+            </p>
+
+            <p class="data_form">
+            <label class="data_form" for="breed_fields_egg_production">Egg Production:</label>
+            <select class="data_form required" id="breed_fields_egg_production">
+                <option></option>
+                <option>Poor</Option>
+                <option>Average</Option>
+                <option>Excellent</Option>
+            </select>
+            </p>
+
+            <p class="data_form">
+            <label class="data_form" for="breed_fields_egg_color">Egg Color:</label>
+            <select class="data_form required" id="breed_fields_egg_color">
+                <option></option>
+                <option>White</Option>
+                <option>Cream</Option>
+                <option>Light brown</Option>
+                <option>Brown</Option>
+                <option>Chocolate</Option>
+                <option>Blue-green</Option>
+            </select>
+            </p>
+
+            <p class="data_form">
+            <label class="data_form" for="breed_fields_egg_color_notes">Egg Color Notes:</label>
+            <input class="data_form" type="text" id="breed_fields_egg_color_notes">
+            </p>
+
+            <p class="data_form">
+            <label class="data_form" for="breed_fields_toes">Toes:</label>
+            <select class="data_form short_form required" id="breed_fields_toes">
+                <option></option>
+                <option>4</Option>
+                <option>5</Option>
+            </select>
+            <label class="data_form tight" for="breed_fields_leg">Leg:</label>
+            <select class="data_form short_form required" id="breed_fields_leg">
+                <option></option>
+                <option>Feathered</Option>
+                <option>Clean</Option>
+            </select>
+            </p>
+
+            <p class="data_form">
+            <label class="data_form" for="breed_fields_beard">Beard:</label>
+            <select class="data_form short_form required" id="breed_fields_beard">
+                <option value=""></option>
+                <option value="Y">Yes</Option>
+                <option value="N">No</Option>
+            </select>
+            <label class="data_form tight" for="breed_fields_muffs">Muffs:</label>
+            <select class="data_form short_form required" id="breed_fields_muffs">
+                <option value=""></option>
+                <option value="Y">Yes</Option>
+                <option value="N">No</Option>
+            </select>
+            </p>
+
+            <p class="data_form">
+            <label class="data_form" for="breed_fields_comb_name">Comb:</label>
+            <select class="data_form required" id="breed_fields_comb_name"></select>
+            </p>
+
+            <p class="data_form">
+            <label class="data_form" for="breed_fields_breed_description">Breed Description:</label>
+            <textarea class="data_form" id="breed_fields_breed_description" rows=4 cols=24></textarea>
+            </p>
+
+            <p class="data_form">
+            <label class="data_form" for="breed_fields_origin">Origin:</label>
+            <textarea class="data_form" id="breed_fields_origin" rows=4 cols=24></textarea>
+            </p>
+
+            <p class="data_form">
+            <label class="data_form" for="breed_fields_disqualifications">Disqualifications:</label>
+            <textarea class="data_form" id="breed_fields_disqualifications" rows=4 cols=24></textarea>
+            </p>
+
+            <p class="data_form">
+            <label class="data_form" for="new_plumage_code">Plumage:</label>
+
+            <div class="form_pick_list">
+                <ul id="plumage_ul" class="form_pick_list"></ul>
+                <a href="#" id="add_plumage_code" class="small_add_button">+</a>
+                <select class="form_pick_list" id="selected_plumage_code"></select>
+                <input type="text" id="add_plumage_menu_color" placeholder="...or create new">
+            </div>
+            </p>
+
+            <p class="data_form">
+            <label class="data_form" for="breed_fields_skin_color">Skin Color:</label>
+            <select class="data_form short_form required" id="breed_fields_skin_color">
+                <option></option>
+                <option>Black</Option>
+                <option>White</Option>
+                <option>Yellow</Option>
+            </select>
+            <label class="data_form tight" for="breed_fields_crest">Crest:</label>
+            <select class="data_form short_form required" id="breed_fields_crest">
+                <option value=""></option>
+                <option value="Y">Yes</Option>
+                <option value="N">No</Option>
+            </select>
+            </p>
+
+            <div class="form_submit_buttons_container">
+                <a href="#" class="form_button postForm"><span class="postFormVerb"></span>&nbsp;Breed</a><span class="form_status"></span>
+            </div>
+
+        </form>
+
+    </div>
+
+    <!-- Control Panel ************************************ -->
+    <div class="shell_controlPanel">
+
+        <form id="breedControlPanel_form">
+            <p class="shell_controlPanel">
+                <label class="shell_controlPanel" for="breed_filter_breed_name">Breed:</label>
+                <input class="shell_controlPanel filterField" id="breed_filter_breed_name" type="text">
+            </p>
+            <p class="shell_controlPanel">
+                <label class="shell_controlPanel" for="breed_filter_breed_description">Desc:</label>
+                <input class="shell_controlPanel filterField" id="breed_filter_breed_description" type="text">
+            </p>
+            <p class="shell_controlPanel">
+                <select class="shell_controlPanel filterField" id="breed_filter_breed_class_code">
+                </select>
+            </p>
+            <span class="shell_controlPanelButton"><a href="breed" class="shell_ops_button filterButton">Filter</a></span>
+
+            <hr class="shell_divider">
+
+            <span class="shell_controlPanelButton"><a href="#" class="shell_ops_button addForm">Add Breed</a></span>
+        </form>
+
+    </div>
+
+</div>
+<!-- END breed ********** -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- prod  ************************************************ -->
+
+<div id="prodFunctionsContainer" class="shell_funcContainer">
+
+
+    <!-- List page -->
+    <div id="prodList" class="shell_mainWindow">
+        <table id="prodListTable" class="shell_listTable">
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Form page -->
+    <div id="prodForm" class="shell_mainWindow shell_ops_form">
+
+        <div class="func_formHeader">
+            <span class="func_title verb"></span>&nbsp;<span class="func_title">Product</span>
+            <div class="form_title_bar">
+                <a href="#" class="shell_ops_button closeForm">X</a>
+            </div>
+        </div>
+
+        <form id="prodForm_form">
+
+            <p class="data_form editOnly">
+            <label class="data_form" for="breed_name">Prod ID:</label>
+            <span id="prodForm_edit_id" class="form_editOnly"></span>
+            </p>
+
+            <p class="data_form">
+            <label class="data_form" for="prod_fields_name">Product Name:</label>
+            <input class="data_form required" type="text" id="prod_fields_name">
+            </p>
+
+            <p class="data_form">
+            <label class="data_form" for="prod_fields_cat_code">Category:</label>
+            <select class="data_form required" id="prod_fields_cat_code"></select>
+            </p>
+
+            <p class="data_form">
+            <label class="data_form" for="prod_fields_size">Size:</label>
+            <select multiple size=4 class="data_form required" id="prod_fields_size"></select>
+            </p>
+
+            <p class="data_form">
+            <label class="data_form" for="prod_fields_color">Color:</label>
+            <input class="data_form required" type="text" id="prod_fields_color">
+            </p>
+
+            <p class="data_form">
+            <label class="data_form short_form" for="prod_fields_price">Price:</label>
+            <input class="data_form short_form required" type="text" id="prod_fields_price">
+            </p>
+
+            <p class="data_form">
+            <label class="data_form short_form" for="prod_fields_on_hand">On Hand:</label>
+            <input class="data_form short_form required" type="text" id="prod_fields_on_hand">
+            </p>
+
+            <p class="data_form">
+            <label class="data_form" for="prod_fields_status">Status:</label>
+            <select class="data_form required" id="prod_fields_status">
+                <option></option>
+                <option value="A">Active</Option>
+                <option value="I">Inactive</Option>
+                <option value="R">Retired</Option>
+            </select>
+            </p>
+
+            <div class="form_submit_buttons_container">
+                <a href="#" class="form_button closeForm">Back to List</a>
+                <a href="#" class="form_button postForm"><span class="postFormVerb"></span>&nbsp;Product</a><span class="form_status"></span>
+            </div>
+
+        </form>
+
+
+
+
+        <!-- Image sizes: 77x122   303x480   606x960  -->
+        <div class="form_file_upload_section">
+            <p class="data_form">
+                <label class="data_form" for="prod_fields_status">Product Image:<br>(606 x 960)&nbsp;</label>
+                <ul id="prodForm_uploads_list" class="form_images-list"></ul>
+            </p>
+        </div>
+
+    </div>
+
+    <!-- Control Panel ************************************ -->
+    <div class="shell_controlPanel">
+
+        <form id="prodControlPanel_form">
+            <p class="shell_controlPanel">
+                <label class="shell_controlPanel" for="prodList_name">Name:</label>
+                <input class="shell_controlPanel filterField" id="prod_filter_name" type="text">
+            </p>
+            <p class="shell_controlPanel">
+                <select class="shell_controlPanel filterField" id="prod_filter_cat_code">
+                </select>
+            </p>
+            <p class="shell_controlPanel">
+                <select class="shell_controlPanel filterField" id="prod_filter_size">
+                </select>
+            </p>
+            <p class="shell_controlPanel">
+                <label class="shell_controlPanel" for="prod_filter_color">Color:</label>
+                <input class="shell_controlPanel filterField" id="prod_filter_color" type="text">
+            </p>
+            <p class="shell_controlPanel">
+                <select class="shell_controlPanel filterField" id="prod_filter_status">
+                    <option value="">-Status-</Option>
+                    <option></option>
+                    <option value="A">Active</Option>
+                    <option value="I">Inactive</Option>
+                    <option value="R">Retired</Option>
+                </select>
+            </p>
+            <span class="shell_controlPanelButton"><a href="prod" class="shell_ops_button filterButton">Filter</a></span>
+
+            <hr class="shell_divider">
+
+            <span class="shell_controlPanelButton"><a href="#" class="shell_ops_button addForm">Add Product</a></span>
+        </form>
+
+    </div>
+
+</div>
+<!-- END prod ********** -->
+
+
+
+
+
+
+
+<!-- order  ************************************************ -->
+
+<div id="orderFunctionsContainer" class="shell_funcContainer">
+
+
+    <!-- List page -->
+    <div id="orderList" class="shell_mainWindow">
+        <table id="orderListTable" class="shell_listTable">
+            <tbody>
+            </tbody>
+        </table>
+
+        <form id="invoiceForm" target="_blank" method="post" action="/ops/ajax/getInvoice">
+            <input type="hidden" name="order_num" id="invoiceForm_order_num">
+        </form>
+
+    </div>
+
+
+
+    <!-- Form page -->
+    <div id="orderForm" class="shell_mainWindow shell_ops_form">
+
+        <div class="func_formHeader">
+            <span class="func_title verb"></span>&nbsp;<span class="func_title">Order</span>
+            <div class="form_title_bar">
+                <a href="#" class="shell_ops_button closeForm">X</a>
+            </div>
+        </div>
+
+        <form id="orderForm_form">
+
+            <p class="data_form editOnly">
+            <label class="data_form" for="order_name">Order #:</label>
+            <p id="orderForm_order_num_data" class="form_editOnly"></p>
+            </p>
+
+            <p class="data_form">
+            <label class="data_form" for="order_fields_order_date">Order date:</label>
+            <span class="displayOnly_data" id="order_fields_order_date"></span>
+            </p>
+
+            <p class="data_form">
+            <label class="data_form" for="order_fields_gift_message">Gift Message:</label>
+            <span class="displayOnly_data" style="color: #444; font-style: italic; display: block; float: left; background-color: #d0d0d0; padding: 1px 8px;" id="order_fields_gift_message"></span>
+            </p>
+
+            <p class="data_form">
+            <label class="data_form" for="order_fields_order_status">Order Status:</label>
+            <select class="data_form required" id="order_fields_order_status">
+                <option></option>
+                <option value="P">Pending</Option>
+                <option value="C">Complete</Option>
+                <option value="X">Canceled</Option>
+            </select>
+            </p>
+
+            <p class="data_form">
+            <label class="data_form" for="order_fields_ops_notes">OPS Notes:</label>
+            <textarea class="data_form" style="margin-bottom: 10px;" id="order_fields_ops_notes" rows=4 cols=24></textarea>
+            </p>
+
+            <hr class="shell_divider">
+
+            <p class="data_form">
+            <label class="data_form" for="order_fields_name">Name:</label>
+            <span class="displayOnly_data" id="order_fields_name"></span>
+            </p>
+
+            <p class="data_form">
+            <label class="data_form" for="order_fields_add1">Street:</label>
+            <span class="displayOnly_data" id="order_fields_add1"></span>
+            </p>
+
+            <p class="data_form">
+            <label class="data_form" for="order_fields_add2">Apt/Suite:</label>
+            <span class="displayOnly_data" id="order_fields_add2"></span>
+            </p>
+
+            <p class="data_form">
+            <label class="data_form" for="order_fields_city">City:</label>
+            <span class="displayOnly_data" id="order_fields_city"></span>
+            </p>
+
+            <p class="data_form">
+            <label class="data_form short_form" for="order_fields_state">State:</label>
+            <span class="data_form displayOnly_data short_form" id="order_fields_state"></span>
+            <label class="data_form short_form tight" for="order_fields_zip">Zip:</label>
+            <span class="displayOnly_data short_form" id="order_fields_zip"></span>
+            </p>
+
+            <p class="data_form">
+            <label class="data_form" for="order_fields_country">Country:</label>
+            <span class="displayOnly_data" id="order_fields_country"></span>
+            </p>
+
+            <hr class="shell_divider">
+
+            <p class="data_form">
+            <label class="data_form" for="order_fields_email">Email:</label>
+            <span class="displayOnly_data" id="order_fields_email"></span>
+            </p>
+
+            <p class="data_form">
+            <label class="data_form" for="order_fields_card_number">Card:</label>
+            <span class="displayOnly_data" id="order_fields_card_number"></span>
+            </p>
+
+            <p class="data_form">
+            <label class="data_form short_form" for="order_fields_ccv">CCV:</label>
+            <span class="data_form displayOnly_data short_form" id="order_fields_ccv"></span>
+            <label class="data_form short_form tight" for="order_fields_expires">Expires:</label>
+            <span class="displayOnly_data short_form" id="order_fields_expires"></span>
+            </p>
+
+            <hr class="shell_divider">
+
+            <p class="data_form">
+            <label class="data_form">Order:</label>
+            <table id="ordered_products_table" class="dataTable">
+                <thead>
+                    <tr><th>Qty</th><th>Item</th><th>Price</th></tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+            </p>
+
+            <div class="form_submit_buttons_container">
+                <a href="#" class="form_button closeForm">Cancel</a>
+                <a href="#" class="form_button postForm"><span class="postFormVerb"></span>&nbsp;order</a><span class="form_status"></span>
+            </div>
+
+        </form>
+
+    </div>
+
+    <!-- Control Panel ************************************ -->
+    <div class="shell_controlPanel">
+
+        <form id="orderControlPanel_form">
+            <p class="shell_controlPanel">
+                <label class="shell_controlPanel" for="order_filter_order_num">Order#:</label>
+                <input class="shell_controlPanel filterField" id="order_filter_order_num" type="text">
+            </p>
+            <p class="shell_controlPanel">
+                <select class="shell_controlPanel filterField" id="order_filter_order_status">
+                    <option value="">- ALL -</option>
+                    <option value="P" SELECTED>Pending</option>
+                    <option value="C">Complete</option>
+                    <option value="X">Canceled</option>
+                </select>
+            </p>
+            <span class="shell_controlPanelButton"><a href="order" class="shell_ops_button filterButton">Filter</a></span>
+
+        </form>
+
+    </div>
+
+</div>
+<!-- END order ********** -->
+
+
+
+
+
+
+
+<div class="shell_clearFix"></div>
+
+
+</body>
+</html>

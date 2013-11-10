@@ -1,0 +1,31 @@
+After line 186 which is:
+
+Lightbox.prototype.sizeContainer = function(imageWidth, imageHeight) 
+
+Add this:
+
+/* BEGIN Patch */
+var f_windowWidth = $(window).width();
+var f_windowHeight = $(window).height();
+
+var maxSize_scale_factor = 1;
+var maxSize_margin = 10;
+
+if ((imageWidth + (maxSize_margin * 2)) > f_windowWidth) {
+  maxSize_scale_factor = f_windowWidth / (imageWidth + (maxSize_margin * 2));
+}
+
+if ((imageHeight + (maxSize_margin * 2)) > f_windowHeight) {
+  if ((f_windowHeight  / (imageHeight + (maxSize_margin * 2))) < maxSize_scale_factor) {
+    maxSize_scale_factor = f_windowHeight / (imageHeight + (maxSize_margin * 2));
+  }
+}
+
+if (maxSize_scale_factor < 1) {
+  imageHeight = Math.round(imageHeight * maxSize_scale_factor);
+  imageWidth = Math.round(imageWidth * maxSize_scale_factor)
+
+  $('.lb-image').width(imageWidth); // Thanks Esolle for these lines!
+  $('.lb-image').height(imageHeight);
+}
+/* End Patch */

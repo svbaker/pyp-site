@@ -1,0 +1,303 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font-family: "Arial","Helvetica", sans-serif;
+    background-color: #000;
+    min-width: 500px;
+}
+
+a img {
+    border: 0;
+}
+
+button {
+    outline: 0;
+}
+
+hr.shell_divider {
+    margin: 0;
+    padding: 0;
+    height: 1px;
+    width: 90%;
+    background-color: #666;
+    color: #ccc;
+    border: 0;
+    clear: both;
+    display: block;
+    -webkit-margin-before: 0.5em;
+    -webkit-margin-after: 0.5em;
+    -webkit-margin-start: auto;
+    -webkit-margin-end: auto;
+}
+
+.shell_clearFix {
+    clear: both;
+}
+
+/* General OPS system buttons */
+.shell_ops_button {
+    background-image: linear-gradient(#666, #222);
+    background-color: #666;
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    font-size: 12px;
+    color: #fff;
+    text-decoration: none;
+    padding: 0 12px;
+    margin: 0 2px;
+    line-height: 18px;
+    border: 0;
+    display: inline-block;
+    float: none;
+}
+.shell_ops_button:hover {
+    background-image: linear-gradient(#777, #333);
+}
+
+/* Dimmed background for modal divs */
+#shell_overlay {
+     /* display: none; */
+     position: absolute;
+     left: 0px;
+     top: 0px;
+     width:100%;
+     height:100%;
+     z-index: 1000;
+     background: rgba(50, 50, 50, .7);
+}
+
+/* Login modal box */
+#shell_login {
+    position: absolute;
+    top: 0px;
+    left: 50%;
+    width: 280px;
+    height: 212px;
+    margin-left: -140px;
+    margin-top: 100px;
+    text-align: center;
+    background-color: #eee;
+    overflow: hidden;
+    border: 1px solid #888;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    color: #333;
+    z-index: 2000;
+}
+
+#shell_login_content {
+    margin: 5% 15%;
+    text-align: left;
+}
+
+.shell_login_form {
+    margin-bottom: 10px;
+    font-size: 100%;
+}
+
+#shell_login_button {
+    font-size: 110%;
+    background: #eee;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    display:block;
+    margin: auto;
+    padding: 2px 4px;
+    outline: 0;
+}
+
+#shell_loginMessage {
+    display: none;
+    padding: 5px 6px 2px;
+    margin-top: 8px;
+    font-weight: bold;
+    color: #a00;
+    text-align: left;
+    width: 180px;
+    background: #dd8;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
+
+#shell_statusLocation {
+    margin-top: 10px;
+}
+
+/* Header Div */
+#shell_header {
+    background-color: #000;
+    width: 100%;
+    height: 32px;
+    color: #fff;
+}
+
+#shell_header_menu {
+    display: block;
+    padding: 6px;
+}
+
+a.shell_nav_links {
+    text-decoration: none;
+    color: #963;
+    cursor: pointer;
+    padding: 0 6px;
+}
+
+a.shell_nav_links:hover {
+    color: #a74;
+}
+
+/* Function Container (Holds control panel and main window) */
+.shell_funcContainer {
+    display: none; /* Shown when activated */
+    padding-left: 140px;
+}
+
+#shell_header_buttons_container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 4px 12px 4px 4px;
+}
+
+/* Control Panel styling ********************* */
+div.shell_controlPanel {
+    position: relative;
+    float: left;
+    width: 140px;
+    right: 140px;
+    margin-left: -100%;
+    background-color: #444;
+    padding: 4px 0 12px 0;
+    min-height: 40px;
+}
+
+label.shell_controlPanel {
+    font-size: 75%;
+    color: #ddd;
+    display: block;
+    width: 40px;
+    float: left;
+    padding: 2px 2px;
+    margin-left: 4px;
+}
+
+input.shell_controlPanel {
+    width: 80px;
+    font-size: 75%;
+}
+
+select.shell_controlPanel {
+    width: 120px;
+    margin-left: 10px;
+    font-size: 50%;
+}
+
+p.shell_controlPanel {
+    clear: left;
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+
+span.shell_controlPanelButton {
+    display: block;
+    float: right;
+    padding-right: 12px;
+    padding-top: 4px;
+    margin-bottom: 12px;
+}
+
+/* List function styling --------------- */
+.shell_mainWindow {
+    position: relative;
+    float: left;
+    width: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    color: #aaa;
+}
+
+.shell_mainWindow::-webkit-scrollbar {
+    width: 16px;
+    height: 16px;
+}
+
+.shell_mainWindow::-webkit-scrollbar-thumb {
+    background-color: rgba(255,255,255,0.4);
+    -webkit-box-shadow: inset 1px 1px 0 rgba(255,255,255,0.10),inset 0 -1px 0 rgba(255,255,255,0.07);
+}
+
+
+.shell_ops_form {
+    display: none; /* Shown when activated */
+    background-color: #ddd;
+    color: #000;
+}
+
+table.shell_listTable {
+    table-layout: fixed;
+    width: 100%;
+    border-spacing: 0;
+    padding: 0;
+}
+
+tr.shell_listTable {
+    /* background: rgba(5,5,5,.85); */
+    color: #aaa;
+}
+
+
+th.shell_listTable {
+    border-bottom: 1px #444 solid;
+    empty-cells: show;
+    font-size: 80%;
+    height: 2.83ex;
+    outline: none;
+    overflow: hidden;
+    padding: 3px 0 1px 10px;
+    vertical-align: middle;
+    white-space: nowrap;
+    text-align: left;
+    background-color: #333;
+}
+
+th.shell_listTable:hover {
+    color: #ccc;
+    cursor: pointer;
+}
+
+td.shell_listTable {
+    border-bottom: 1px #444 solid;
+    empty-cells: show;
+    font-size: 80%;
+    height: 2.83ex;
+    outline: none;
+    overflow: hidden;
+    padding: 3px 0 1px 10px;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+td.number, th.number {
+    text-align: right;
+    padding-right: 6px;
+}
+
+a.shell_listTable {
+    text-decoration: none;
+    color: #369;
+    cursor: pointer;
+}
+
+a.shell_listTable:hover {
+    color: #47a;
+}
+
+
+.currentNav {
+    font-weight: bold;
+}

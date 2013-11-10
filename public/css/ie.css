@@ -1,0 +1,5 @@
+#global_header_cart {
+	background-image: none;
+	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/site/cart.png', sizingMethod='scale');
+	-ms-filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/site/cart.png', sizingMethod='scale');
+}

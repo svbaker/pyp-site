@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Pampered Poultry - Upload your backyard chicken photos</title>
+<script type="text/javascript" src="js/jquery-1.8.2.min.js" ></script>
+<script type='text/javascript' src='js/jquery.form.min.js'></script>
+<script type='text/javascript' src='js/upload.js'></script>
+<script type='text/javascript' src="js/lightbox.js"></script>
+<script type='text/javascript' src='js/spin.min.js'></script>
+<link href="css/app.css" rel="stylesheet" />
+<link href="css/lightbox.css" rel="stylesheet" />
+<link rel="shortcut icon" href="/images/favicon.ico">
+</head>
+
+<body>
+
+
+
+<div class="header-bar">
+	<div style="margin-left: 94px; line-height: 58px;">
+	<img src="/images/logo-stock/pampered-poultry.png" width=60 height=60><span class="logo">Pampered Poultry</span>
+	</div>
+</div>
+
+<div class="page-container">
+<div class="form-container">
+
+<div class="header-container" style="background: rgba(225, 225, 225, .5); padding-left: 6px; -webkit-border-radius: 5px; border-radius: 5px;">
+	<h1>Upload photos of your favorite <span class="breed_name_text">fowl</span></h1>
+</div>
+
+
+<div class="section">
+<div class="section-inner">
+
+	<div class="input-group">
+
+
+	<div class="title-row">
+		<label for="full_name">Your Info:</label>
+		<p class="inline-message">Your full name</p>
+	</div>
+	<label></label>
+	<input class="shortInputBox validated-input" id="full_name" maxlength="140">
+
+	<div class="title-row" style="height: 28px;">
+		<span id="full_name-msg" class="msg right" style="font-size: 12px; padding-left: 6px; line-height: 28px;">Please enter your full name.</span>
+	</div>
+
+
+
+	<div class="follow-row">
+		<label></label>
+		<p class="inline-message">Farm name (optional)</p>
+	</div>
+	<label></label>
+	<input class="shortInputBox" id="farm_name" maxlength="140">
+
+	<div class="title-row" style="height: 28px;">
+	</div>
+
+
+
+	<div class="follow-row">
+		<label></label>
+		<p class="inline-message">Mailing address (if you would like us to ship you a bumper sticker if we feature your photo)</p>
+	</div>
+	<label></label>
+	<textarea name="mailing_address" class="inputBox" id="mailing_address" style="overflow: hidden; margin-top: 0px; margin-bottom: 2.39063px; height: 42px; white-space: pre-wrap; word-wrap: break-word;"></textarea>
+
+
+
+	<div class="follow-row" style="margin-top: 0;">
+		<label></label>
+		<p class="inline-message">Email</p>
+	</div>
+	<label>&nbsp;</label>
+	<input class="shortInputBox validated-input" id="email" maxlength="140">
+
+		<div class="title-row" style="font-size: 1px; margin: 0; padding: 0;">&nbsp;
+		</div>
+
+	<div class="title-row" style="height: 28px;">
+		<span id="email-msg" class="msg right" style="font-size: 12px; padding-left: 6px; line-height: 28px;">Please enter a valid email address.</span>
+	</div>
+
+
+
+	<div class="title-row">
+		<label></label>
+		<input type="checkbox" id="email_optin" CHECKED><span style="font-size: 12px; margin-left: 4px;">Please include me on occasional Pampered Poultry email updates</span>
+	</div>
+
+       
+	<div class="follow-row">
+		<label></label>
+		<p class="inline-message">Your website address (optional)</p>
+	</div>
+	<label></label>
+	<input class="shortInputBox" id="website" maxlength="140">
+
+	<div class="title-row" style="height: 28px;">
+	</div>
+
+
+	</div>
+&nbsp;
+</div>
+</div>
+
+
+
+
+<div class="section">
+<div class="section-inner">
+
+	<div class="input-group">
+
+	<div id="photos">
+	<label id="photos-label" for="userPhoto">Your Photos:</label>
+	<ul class="photos-list">
+
+	<li class="image-box" id="image_add">
+		<form id="uploadForm" method="post" enctype="multipart/form-data" action="/uploadPhoto">
+		<div class="upload-container">
+		<input class="image-upload" type="file" id="userPhotoInput" name="userPhoto" multiple="multiple" accept="image/*"/>
+		</div>
+		<div class="add-photos-button">
+		<span class="button-add"></span>
+		<span>Add Photos</span>
+		</div>
+		<div class="loading-container" id="loading_pane"></div>
+		</form>
+	</li>
+	<li class="image-box empty"><div></div></li>
+	<li class="image-box empty"><div></div></li>
+	<li class="image-box empty"><div></div></li>
+	<li class="image-box empty"><div></div></li>
+	</ul>
+	<p style="display: inline-block; clear: both; width: 541px; margin-left: 105px; margin-bottom: 0; padding-top: 4px; line-height: 16px; font-size: 12px;">
+    	Upload photos of your <span class="breed_name_text">breed</span> here.
+    </p>
+	</div>
+
+	</div>
+
+
+
+
+	<hr>
+	<div class="input-group">
+
+
+		<div class="title-row">
+			<label for="photo-credit">&nbsp;</label>
+			<p class="inline-message">
+	        Please tell us how you would like the photo credit to read (i.e., bird name, farm name, etc.)
+	        </p>
+		</div>
+		<label></label>
+		<input class="inputBox validated-input" id="photo-credit" maxlength="140">
+		<div class="title-row">
+			<label></label>
+			<p class="inline-message">
+		    <span id="photo-credit-msg" class="msg">Please tell us where the photos came from.</span>
+		    </p>
+		</div>
+
+	</div>
+
+
+
+
+
+
+</div>
+</div>
+
+
+<div class="section">
+<div class="section-inner">
+
+	<div class="input-group">
+
+	
+	<div class="title-row">
+		<label for="breed_description">Your Insights:</label>
+		<p class="inline-message">Why do you love <span class="breed_name_text">this breed</span>?</p>
+	</div>
+	<label></label>
+	<input class="inputBox" id="breed_description" maxlength="250">
+
+	<div class="title-row" style="height: 28px;">
+		<label>&nbsp;</label>
+	</div>
+
+
+
+	<div class="follow-row">
+		<label></label>
+		<p class="inline-message">How would you describe the personality of <span class="breed_name_text">this breed</span>?</p>
+	</div>
+	<label></label>
+	<input class="inputBox" id="breed_personality" maxlength="250">
+
+	<div class="title-row" style="height: 28px;">
+		<label>&nbsp;</label>
+	</div>
+
+
+
+
+
+	<div class="follow-row">
+		<label></label>
+		<p class="inline-message" style="margin-bottom: 4px;">What do you value most about the breed?</p>
+	</div>
+	<label></label>
+	
+	<div class="title-row" style="height: 28px;">
+		<input type="checkbox" id="eggs" style="vertical-align: top; margin-left: 4px;"><span class="checkboxLabel">Egg production</span>
+		<input type="checkbox" id="meat" style="vertical-align: top;"><span class="checkboxLabel">Meat Production</span>
+		<input type="checkbox" id="dual" style="vertical-align: top;"><span class="checkboxLabel">Dual Purpose (egg/meat)</span>
+		<input type="checkbox" id="pet" style="vertical-align: top;"><span class="checkboxLabel">Pet / Personality</span>
+		<input type="checkbox" id="looks" style="vertical-align: top;"><span class="checkboxLabel">Looks / Aesthetics</span>
+	</div>
+
+
+
+	</div>
+
+	<input id="formSubmit" type="submit" value="Submit Photos" class="button" style="margin-left: 310px; margin-bottom: 15px; margin-top: 15px;"/>
+
+	</div>
+
+</div>
+
+
+
+</div>
+</div>
+
+</body>
+</html>

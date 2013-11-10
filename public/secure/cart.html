@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Pampered Poultry - Shopping cart</title>
+
+<link rel="stylesheet" href="/css/global.css" type="text/css">
+<link rel="stylesheet" href="/css/cart.css" type="text/css">
+<link rel="shortcut icon" href="/images/favicon.ico">
+
+<script type="text/javascript" src="/js/jquery-1.8.2.min.js"></script>
+<script type="text/javascript" src="/js/env.js"></script>
+<script type="text/javascript" src="/js/global.js"></script>
+<script type="text/javascript" src="/js/cart.js"></script>
+
+<!--[if lte IE 8]>
+<link href="/css/ie.css" rel="stylesheet" />
+<script type="text/javascript" src="/js/json3.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+
+<div class="global_header_bar">
+	<div class="global_page_container global_header_container">
+		<a href="/"><img src="/images/site/feather_icon.png" id="header_icon"></a>
+		<a href="/"><img src="/images/site/pyptext2.png" id="header_logo"></a>
+	</div>
+</div>
+
+
+<div class="global_page_container">
+
+<!-- Menu -->
+	<div class="menu_panel">
+		<div class="menu">
+			<h2>Pampered Products</h2>
+			<ul class="menu_list">
+				<li class="global_menuCart"><a class="menu_link" href="/secure/cart.html">Shopping Cart</a></li>
+				<li><a class="menu_link" href="/diapers.html">Diapers</a></li>
+				<li><a class="menu_link" href="/feather_guards.html">Feather Guards</a></li>
+				<li><a class="menu_link" href="/attire.html">Attire</a></li>
+			</ul>
+		</div>
+
+		<div class="menu">
+			<h2>Browse</h2>
+			<ul class="menu_list">
+				<li><a class="menu_link" href="/">Home</a></li>
+				<li><a class="menu_link" href="http://www.farmdreamer.blogspot.com/2012_11_01_archive.html">Farm Dreamer Blog</a></li>
+				<li><a class="menu_link" href="http://www.sewingmyfuture.org">Sewing My Future</a></li>
+				<li><a class="menu_link last_menu_item" href="/contact_pampered_poultry.html">Contact Us</a></li>
+			</ul>
+		</div>
+	</div>
+
+
+<!-- Content window -->
+	<div id="global_content_container">
+
+		<div id="global_content_pane">
+			<div class="global_wide_main_window">
+
+
+				<div class="cartpage_section" style="margin-top: 0;">
+					<div class="cartpage_content_container">
+					All products are shipped within 48 hours via USPS. If you need priority shipping, email us and we will do our best to accommodate your needs. Shipping in the United States is a flat $1.95 per order. International shipping is $6.95 per order, plus $1 per item shipped.
+					</div>
+				</div>
+
+
+
+				<div class="cartpage_section">
+					<h2>Items in your cart:</h2>
+					<div class="cartpage_content_container" id="cart">
+						<div class="cartpage_cart_table_container">
+							<table width=100% class="cartpage_cartTable">
+								<thead>
+									<tr>
+										<th class="cartpage_qty_col">Qty&nbsp;</th>
+										<th class="cartpage_item_col">Item</th>
+										<th>Price</th><th>Amount</th>
+									</tr>
+								</thead>
+								<tbody class="global_whitepageLinks">
+								</tbody>
+							</table>
+							<div class="cartpage_cartButtons">
+								<a id="update_cart" href="#" class="global_control_button global_control_button_enlarge">Update Cart</a>
+							</div>
+							<div class="global_clearfix"></div>
+
+
+							<div style="text-align: left; margin: 24px 0 6px 4px;">
+								Ship to: <select id="cartForm_shipto_country" class="cartpage_form_shipCountry">
+									<script>
+
+									$.ajax({
+									        url: "/site/ajax/order_form_menus",
+									        type: 'GET',
+									        timeout: 10000,
+									        dataType: 'json',
+									        async: false,
+									        success: function(data) {
+									            if (data.status == 'OK') {
+									                document.write(data.payload.countries_menu);
+									            } else {
+									                window.location.href = thisSiteFullurl + '500.html';
+									            }
+
+									        },
+									        error: function(a, b, c) {
+									            window.location.href = thisSiteFullurl + '500.html';
+									        }
+										});
+
+									</script>
+								</select>
+							</div>
+
+							<div style="text-align: left; margin: 2px 0 2px 52px;">
+								<input type="checkbox" id="cartForm_gift_status" value="Y" name="cartForm_gift_status" style="margin-right: 6px;">This will be a gift
+							</div>
+
+						</div>
+
+						<div id="giftMessage_container" style="margin-top: 12px; display: none;">
+							<label class="indented_cartLabel" for="cartForm_gift_message">Gift Card Message:<br><span class="labelNote">(Optional)</span></label>
+							<textarea id="cartForm_gift_message" class="postData cartForm_text_label" rows=3 cols=42></textarea>
+						</div>
+
+						<div class="cartpage_formButton_container">
+							<a href="#" class="global_button global_button_enlarge backNav">Continue Shopping</a>
+							<a href="#" class="global_button global_button_enlarge checkout">Complete Checkout</a>
+						</div>
+
+					</div>
+				</div>
+
+
+
+			</div>
+		</div>
+
+	</div>
+
+<!-- End content window -->
+
+
+	<div class="global_clearfix"></div>
+	<div class="global_footer">
+		&copy; 2013 Pampered Poultry
+	</div>
+
+
+</div>
+
+
+</body>
+</html>
